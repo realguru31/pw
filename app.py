@@ -419,7 +419,7 @@ with ctrl_cols[2]:
     range_pct = float(strike_range_pct.replace("±", "").replace("%", "")) / 100
 
 with ctrl_cols[3]:
-    refresh = st.button("🔄 Refresh", use_container_width=True)
+    refresh = st.button("🔄 Refresh", width="stretch")
 
 with ctrl_cols[4]:
     auto_refresh = st.checkbox("Auto-refresh (5 min)", value=False)
@@ -581,7 +581,7 @@ with tab_gex:
             margin=dict(l=60, r=20, t=40, b=40)
         )
         
-        st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
+        st.plotly_chart(fig, width="stretch", config={'displayModeBar': False})
     
     with col_info:
         st.markdown("#### 🎯 Key Levels")
@@ -641,7 +641,7 @@ with tab_gex:
         yaxis=dict(title="Net GEX", gridcolor='#1a2332', tickformat=','),
         margin=dict(l=60, r=20, t=20, b=40)
     )
-    st.plotly_chart(fig_net, use_container_width=True, config={'displayModeBar': False})
+    st.plotly_chart(fig_net, width="stretch", config={'displayModeBar': False})
 
 
 # ═══ TAB 2: KEY LEVELS ════════════════════════════════════════
@@ -675,7 +675,7 @@ with tab_levels:
             legend=dict(bgcolor='rgba(0,0,0,0)', font=dict(color='#8b9dc3')),
             margin=dict(l=60, r=20, t=20, b=40)
         )
-        st.plotly_chart(fig_oi, use_container_width=True, config={'displayModeBar': False})
+        st.plotly_chart(fig_oi, width="stretch", config={'displayModeBar': False})
     
     with lev_col2:
         st.markdown("### 📊 Volume Profile")
@@ -700,7 +700,7 @@ with tab_levels:
             legend=dict(bgcolor='rgba(0,0,0,0)', font=dict(color='#8b9dc3')),
             margin=dict(l=60, r=20, t=20, b=40)
         )
-        st.plotly_chart(fig_vol, use_container_width=True, config={'displayModeBar': False})
+        st.plotly_chart(fig_vol, width="stretch", config={'displayModeBar': False})
     
     # Put/Call ratios
     st.markdown("### 📈 Put/Call Analysis")
@@ -756,7 +756,7 @@ with tab_delta:
         yaxis=dict(title="Net Delta Exposure", gridcolor='#1a2332', tickformat=','),
         margin=dict(l=60, r=20, t=20, b=40)
     )
-    st.plotly_chart(fig_delta, use_container_width=True, config={'displayModeBar': False})
+    st.plotly_chart(fig_delta, width="stretch", config={'displayModeBar': False})
     
     # Delta summary
     total_net_dex = gex_filtered['net_dex'].sum()
@@ -805,7 +805,7 @@ with tab_delta:
         legend=dict(bgcolor='rgba(0,0,0,0)', font=dict(color='#8b9dc3')),
         margin=dict(l=60, r=20, t=20, b=40)
     )
-    st.plotly_chart(fig_iv, use_container_width=True, config={'displayModeBar': False})
+    st.plotly_chart(fig_iv, width="stretch", config={'displayModeBar': False})
 
 
 # ═══ TAB 4: MATRIX ════════════════════════════════════════════
@@ -841,7 +841,7 @@ with tab_matrix:
             'C_IV': '{:.1f}', 'P_IV': '{:.1f}',
             'Net_GEX': '{:,.0f}'
         }).background_gradient(subset=['Net_GEX'], cmap='RdYlGn', vmin=-abs(matrix['Net_GEX']).max(), vmax=abs(matrix['Net_GEX']).max()),
-        use_container_width=True,
+        width="stretch",
         height=700
     )
 
@@ -865,7 +865,7 @@ with tab_data:
             'Call Vol': '{:,.0f}', 'Put Vol': '{:,.0f}',
             'Total Γ': '{:,.4f}', 'Net Δ': '{:,.0f}'
         }),
-        use_container_width=True, height=600
+        width="stretch", height=600
     )
     
     # Download
